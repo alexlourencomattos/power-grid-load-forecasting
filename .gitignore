@@ -1,0 +1,16 @@
+.venv/
+.idea/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+*.egg-info/
+.env
+data/bronze/
+data/silver/
+data/gold/
+data/manifests/
+data/.ons_load_pipeline.lock
+.tmp-data/
+artifacts/
+

@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "power-grid-load-forecasting"
+version = "0.1.0"
+description = "Production-ready seven-day electricity load forecasting for Brazil's power grid"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115,<1.0",
+  "joblib>=1.4,<2.0",
+  "pandas>=2.2,<3.0",
+  "pyarrow>=18,<21",
+  "requests>=2.32,<3.0",
+  "scikit-learn>=1.5,<2.0",
+  "uvicorn[standard]>=0.32,<1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9.0", "ruff>=0.8,<1.0"]
+
+[project.scripts]
+ons-load = "ons_load_pipeline.cli:main"
+ons-train = "ons_load_pipeline.training:main"
+ons-forecast = "ons_load_pipeline.forecasting:main"
+ons-api = "ons_load_pipeline.api:main"
+ons-production = "ons_load_pipeline.production:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
